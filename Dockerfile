@@ -1,7 +1,8 @@
-FROM ubuntu:trusty
+FROM rocker/r-base
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libssl-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     libsasl2-dev \
@@ -12,9 +13,40 @@ RUN apt-get update \
     zsh \
     emacs
 
-# speed up r packages installation
-RUN sed -i -e 's/MAKE=.*/MAKE="make -j 8"/g' hello.txt
+# speed up R packages installation
+# RUN sed -i -e 's/MAKE=.*/MAKE="make -j 8"/g' /usr/lib/R/etc/Renviron
 
 RUN Rscript -e 'install.packages(c(\
-    "aws.s3"\
+  "aws.s3",\
+  "caret",\
+  "config",\
+  "data.table",\
+  "dbplyr",\
+  "doParallel",\
+  "dplyr",\
+  "DT",\
+  "e1071",\
+  "elasticnet",\
+  "forecast",\
+  "ggplot2",\
+  "jsonlite",\
+  "kernlab",\
+  "lubridate",\
+  "mongolite",\
+  "party",\
+  "purrr",\
+  "randomForest",\
+  "RColorBrewer",\
+  "readr",\
+  "reshape2",\
+  "rpart",\
+  "RPostgreSQL",\
+  "scales",\
+  "shiny",\
+  "shinythemes",\
+  "sqldf",\
+  "stringr",\
+  "tidyr",\
+  "tidyverse",\
+  "xgboost"\
 ), repos = "http://cran.rstudio.com")'
