@@ -1,4 +1,4 @@
-FROM rocker/r-base
+FROM rocker/tidyverse
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
