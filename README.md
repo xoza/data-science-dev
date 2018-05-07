@@ -1,3 +1,3 @@
 # data-science-dev
 
-Dockerfiles for Data Science development
+Customized docker image for Data Science development.
