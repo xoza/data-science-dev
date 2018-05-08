@@ -12,7 +12,6 @@ RUN apt-get update \
     libxml2-dev \
     mutt \
     postfix \
-    r-base \
     zsh \
     emacs
 
@@ -27,9 +26,6 @@ RUN pip install --upgrade \
     pytz \
     sklearn \
     sqlalchemy
-
-# speed up R packages installation. WARNING!! Some packages installation fail with this config
-# RUN sed -i -e 's/MAKE=.*/MAKE="make -j 8"/g' /usr/lib/R/etc/Renviron
 
 RUN Rscript -e 'install.packages(c(\
   "aws.s3",\
